@@ -74,10 +74,10 @@ class InputSubmitUtil {
       String provider = settingsServerController.defaultServer.provider;
       logger.d("provider: $provider , $model");
       if (provider == "azure") {
-        openai = GeekerAIUtils.instance.getAzureOpenaiInstance(
-            settingsServerController.defaultServer, model);
-        deploymentId = settingsServerController.defaultServer
-            .getDeploymentIdByModel(model);
+        // openai = GeekerAIUtils.instance.getAzureOpenaiInstance(
+        //     settingsServerController.defaultServer, model);
+        // deploymentId = settingsServerController.defaultServer
+        //     .getDeploymentIdByModel(model);
       } else {
         openai = GeekerAIUtils.instance
             .getOpenaiInstance(settingsServerController.defaultServer);
@@ -285,10 +285,10 @@ class InputSubmitUtil {
       chatMessageController.addMessage(userMessage);
       chatMessageController.update();
       if (provider == "azure") {
-        openAI = GeekerAIUtils.instance.getAzureOpenaiInstance(
-            settingsServerController.defaultServer, model);
-        deploymentId = settingsServerController.defaultServer
-            .getDeploymentIdByModel(model);
+        // openAI = GeekerAIUtils.instance.getAzureOpenaiInstance(
+        //     settingsServerController.defaultServer, model);
+        // deploymentId = settingsServerController.defaultServer
+        //     .getDeploymentIdByModel(model);
       } else {
         openAI = GeekerAIUtils.instance
             .getOpenaiInstance(settingsServerController.defaultServer);
@@ -308,7 +308,7 @@ class InputSubmitUtil {
                 questionInputController.questionInputModel.imageParameterStyle!)
             .openAIImageStyle,
       );
-      logger.d("image model: ${images.json.toString()}");
+      logger.d("image model: ${images.data.toString()}");
       OpenAIImageData image = images.data.first;
       logger.d("image url: ${image.url}");
       logger.d("image revise: ${image.revisedPrompt}");
@@ -316,7 +316,7 @@ class InputSubmitUtil {
       if (images.haveData) {
         MessageModel targetMessage = chatMessageController.createNewMessage(
             chatSessionController.currentSession.sid, 'assistant', '', false);
-        targetMessage.responseJson = jsonEncode(images.json);
+        targetMessage.responseJson = jsonEncode(images.data);
         targetMessage.status = 1;
         targetMessage.updated = getCurrentDateTime() + 1;
         chatMessageController.addMessage(targetMessage);
@@ -729,6 +729,8 @@ class InputSubmitUtil {
     logger.d("aitype: ${aiModel.aiType}");
 
     ProviderModel providerModel = AppConstants.getProvider(provider);
+
+    logger.d("ProviderModel: ${providerModel.baseUrl}");
     if (providerModel.supportedModels.contains(aiModel.modelName)) {
       if (chatSessionController.currentSession.modelType ==
           ModelType.image.name) {

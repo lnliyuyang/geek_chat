@@ -49,6 +49,9 @@ int numTokenCounter(String model, String content) {
       model == "codechat-bison" ||
       model == "codechat-bison-32k" ||
       model == "chat-bison-32k" ||
+      model == "ERNIE-Bot" ||
+      model == "qwen-max" ||
+      model == "SparkDesk" ||
       model == "gemini-pro") {
     modelStr = "gpt-3.5-turbo";
   }

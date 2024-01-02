@@ -15,21 +15,24 @@ class GeekerAIUtils {
     defaultServer = defaultServer;
     OpenAI.apiKey = defaultServer.apiKey;
     OpenAI.baseUrl = defaultServer.apiHost;
+    OpenAI.organization = "org-PlK3qjbyjGNk5PMYTZjyS9tB";
     OpenAI.requestsTimeOut = const Duration(seconds: 60);
-    OpenAI.showLogs = debug;
-    OpenAI.showResponsesLogs = debug;
+    // OpenAI.showLogs = debug;
+    // OpenAI.showResponsesLogs = debug;
+    OpenAI.showLogs  = true;
+    OpenAI.showResponsesLogs = true;
     return OpenAI.instance;
   }
 
-  AzureOpenAI getAzureOpenaiInstance(ServerModel defaultServer, String model) {
-    AzureOpenAI.apiKey = defaultServer.getApiKeyByModel(model);
-    AzureOpenAI.baseUrl = defaultServer.getBaseUrlByModel(model);
-    AzureOpenAI.apiVersion = AppConstants.azureAPIVersion;
-    AzureOpenAI.requestsTimeOut = const Duration(seconds: 60);
-    AzureOpenAI.showLogs = debug;
-    AzureOpenAI.showResponsesLogs = debug;
-    return AzureOpenAI.instance;
-  }
+  // AzureOpenAI getAzureOpenaiInstance(ServerModel defaultServer, String model) {
+  //   AzureOpenAI.apiKey = defaultServer.getApiKeyByModel(model);
+  //   AzureOpenAI.baseUrl = defaultServer.getBaseUrlByModel(model);
+  //   AzureOpenAI.apiVersion = AppConstants.azureAPIVersion;
+  //   AzureOpenAI.requestsTimeOut = const Duration(seconds: 60);
+  //   AzureOpenAI.showLogs = debug;
+  //   AzureOpenAI.showResponsesLogs = debug;
+  //   return AzureOpenAI.instance;
+  // }
 
   OpenAI getGeekerChatInstance(ServerModel defaultServer) {
     return getOpenaiInstance(defaultServer);
@@ -52,23 +55,23 @@ class GeekerAIUtils {
 
   GeekerAIUtils._();
 
-  initOpenAI(ServerModel defaultServer, {String? model}) {
-    if (defaultServer.provider == "azure") {
-      AzureOpenAI.apiKey = defaultServer.getApiKeyByModel(model!);
-      AzureOpenAI.baseUrl = defaultServer.getBaseUrlByModel(model);
-      AzureOpenAI.requestsTimeOut = const Duration(seconds: 60);
-      AzureOpenAI.showLogs = debug;
-      AzureOpenAI.showResponsesLogs = debug;
-      return AzureOpenAI.instance;
-    } else {
-      OpenAI.apiKey = defaultServer.apiKey;
-      OpenAI.baseUrl = defaultServer.apiHost;
-      OpenAI.requestsTimeOut = const Duration(seconds: 60);
-      OpenAI.showLogs = debug;
-      OpenAI.showResponsesLogs = debug;
-      return OpenAI.instance;
-    }
-  }
+  // initOpenAI(ServerModel defaultServer, {String? model}) {
+  //   if (defaultServer.provider == "azure") {
+  //     AzureOpenAI.apiKey = defaultServer.getApiKeyByModel(model!);
+  //     AzureOpenAI.baseUrl = defaultServer.getBaseUrlByModel(model);
+  //     AzureOpenAI.requestsTimeOut = const Duration(seconds: 60);
+  //     AzureOpenAI.showLogs = debug;
+  //     AzureOpenAI.showResponsesLogs = debug;
+  //     return AzureOpenAI.instance;
+  //   } else {
+  //     OpenAI.apiKey = defaultServer.apiKey;
+  //     OpenAI.baseUrl = defaultServer.apiHost;
+  //     OpenAI.requestsTimeOut = const Duration(seconds: 60);
+  //     OpenAI.showLogs = debug;
+  //     OpenAI.showResponsesLogs = debug;
+  //     return OpenAI.instance;
+  //   }
+  // }
 
   bool debug = true;
 }
