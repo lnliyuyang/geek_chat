@@ -86,6 +86,36 @@ class AppConstants {
   /// AI 支持的模型
   static List<AiModel> aiModels = [
     AiModel(
+      modelName: 'ERNIE-Bot',
+      alias: ['ERNIE-Bot'],
+      aiType: AiType.chatgpt,
+      modelType: ModelType.chat,
+      temperature: 0.7,
+      maxContextSize: 4000,
+      modelMaxContextSize: 4000,
+      // maxTokens: 4096,
+    ),
+    AiModel(
+      modelName: 'SparkDesk',
+      alias: ['SparkDesk'],
+      aiType: AiType.chatgpt,
+      modelType: ModelType.chat,
+      temperature: 0.7,
+      maxContextSize: 4000,
+      modelMaxContextSize: 4000,
+      // maxTokens: 4096,
+    ),
+    AiModel(
+      modelName: 'qwen-max',
+      alias: ['qwen-max'],
+      aiType: AiType.chatgpt,
+      modelType: ModelType.chat,
+      temperature: 0.7,
+      maxContextSize: 4000,
+      modelMaxContextSize: 4000,
+      // maxTokens: 4096,
+    ),
+    AiModel(
       modelName: 'gpt-3.5-turbo',
       alias: ['gpt-3.5'],
       aiType: AiType.chatgpt,

@@ -62,6 +62,27 @@ class ServerModel {
           "url": "",
           // "apiVersion": "",
         },
+        "ERNIE-Bot": {
+          "name": "ERNIE-Bot",
+          "apiKey": "",
+          "deploymentId": "",
+          "url": "",
+          // "apiVersion": "",
+        },
+        "SparkDesk": {
+          "name": "SparkDesk",
+          "apiKey": "",
+          "deploymentId": "",
+          "url": "",
+          // "apiVersion": "",
+        },
+        "qwen-max": {
+          "name": "qwen-max",
+          "apiKey": "",
+          "deploymentId": "",
+          "url": "",
+          // "apiVersion": "",
+        },
         "gpt-4-32k": {
           "name": "gpt-4-32k",
           "apiKey": "",
