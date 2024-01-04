@@ -5,8 +5,8 @@ import 'package:geek_chat/util/functions.dart';
 import 'package:get/get.dart';
 
 // ignore: must_be_immutable
-class StandardServerSettingsComponent extends StatelessWidget {
-  StandardServerSettingsComponent({super.key});
+class OneAPISettingsComponent extends StatelessWidget {
+  OneAPISettingsComponent({super.key});
 
   SettingsController settingsController = Get.find();
   SettingsServerController settingsServerController = Get.find();
@@ -25,7 +25,7 @@ class StandardServerSettingsComponent extends StatelessWidget {
           // Padding(padding: paddingOnly())
           Padding(
             padding:
-                const EdgeInsets.only(left: 20, top: 0, bottom: 0, right: 10),
+            const EdgeInsets.only(left: 20, top: 0, bottom: 0, right: 10),
             child: TextFormField(
               initialValue: controller.defaultServer.apiHost,
               decoration: const InputDecoration(
@@ -41,7 +41,7 @@ class StandardServerSettingsComponent extends StatelessWidget {
           ),
           Padding(
             padding:
-                const EdgeInsets.only(left: 20, top: 20, bottom: 0, right: 10),
+            const EdgeInsets.only(left: 20, top: 20, bottom: 0, right: 10),
             child: TextFormField(
               initialValue: controller.defaultServer.apiKey,
               decoration: const InputDecoration(
@@ -114,3 +114,4 @@ class StandardServerSettingsComponent extends StatelessWidget {
     });
   }
 }
+

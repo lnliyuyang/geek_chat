@@ -70,6 +70,10 @@ class AppConstants {
   /// AI 分类
   static List<AiGroup> aiGroups = [
     AiGroup(
+        aitype: AiType.oneApi,
+        groupName: "One API",
+        groupDesc: "OneAPI AI"),
+    AiGroup(
         aitype: AiType.chatgpt,
         groupName: "ChatGPT",
         groupDesc: "OpenAI ChatGPT"),
@@ -88,7 +92,7 @@ class AppConstants {
     AiModel(
       modelName: 'ERNIE-Bot',
       alias: ['ERNIE-Bot'],
-      aiType: AiType.chatgpt,
+      aiType: AiType.oneApi,
       modelType: ModelType.chat,
       temperature: 0.7,
       maxContextSize: 4000,
@@ -98,7 +102,7 @@ class AppConstants {
     AiModel(
       modelName: 'SparkDesk',
       alias: ['SparkDesk'],
-      aiType: AiType.chatgpt,
+      aiType: AiType.oneApi,
       modelType: ModelType.chat,
       temperature: 0.7,
       maxContextSize: 4000,
@@ -108,7 +112,7 @@ class AppConstants {
     AiModel(
       modelName: 'qwen-max',
       alias: ['qwen-max'],
-      aiType: AiType.chatgpt,
+      aiType: AiType.oneApi,
       modelType: ModelType.chat,
       temperature: 0.7,
       maxContextSize: 4000,
@@ -275,6 +279,16 @@ class AppConstants {
     }
     return list;
   }
+  static List<String> get oneApiModelNameList {
+    List<String> list = [];
+    list.addAll(openaiModelNameList);
+    for (AiModel model in aiModels) {
+      if (model.aiType == AiType.oneApi) {
+        list.add(model.modelName);
+      }
+    }
+    return list;
+  }
 
   static List<String> get azureModelNameList {
     List<String> list = [];
@@ -302,6 +316,12 @@ class AppConstants {
       name: "OpenAI",
       baseUrl: "https://api.openai.com",
       supportedModels: openaiModelNameList,
+    ),
+    ProviderModel(
+      id: "oneapi",
+      name: "One API",
+      baseUrl: "http://123.249.35.207:35533/",
+      supportedModels: oneApiModelNameList,
     ),
     ProviderModel(
       id: "geekerchat",

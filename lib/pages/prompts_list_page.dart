@@ -11,12 +11,17 @@ import 'package:geek_chat/models/session.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 
+import '../controller/settings_server_controller.dart';
+import '../models/server.dart';
+import '../util/app_constants.dart';
+
 // ignore: must_be_immutable
 class PromptsListPage extends StatelessWidget {
   // EventBus eventBus = Get.find();
   Logger logger = Get.find();
   TrackerController tracker = Get.find();
   late StreamSubscription eventSub;
+  SettingsServerController settingsServerController = Get.find();
   PromptsListPage({super.key}) {
     // eventSub = eventBus.on<LanguageModel>().listen((event) {
     //   mainController.initPrompts().then((value) {
@@ -70,10 +75,13 @@ class PromptsListPage extends StatelessWidget {
                         elevation: 5,
                         child: InkWell(
                           onTap: () {
+                            ProviderModel providerModel = AppConstants.getProvider(
+                                settingsServerController.defaultServer.provider);
                             SessionModel sessionModel =
-                                chatSessionController.createSession(
+                                chatSessionController.newSession(
                               name: promptModel.name,
                               prompt: promptModel.prompt,
+                                  modelName: providerModel.supportedModels.last,
                             );
                             // // chatListController.save();
                             chatSessionController.saveSession(sessionModel);

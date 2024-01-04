@@ -10,6 +10,8 @@ import 'package:geek_chat/models/server.dart';
 import 'package:geek_chat/util/app_constants.dart';
 import 'package:get/get.dart';
 
+import '../../components/settings/oneapi_active.dart';
+
 // ignore: must_be_immutable
 class ServerSettingsPage extends StatelessWidget {
   ServerSettingsPage({super.key});
@@ -90,6 +92,8 @@ class ServerSettingsPage extends StatelessWidget {
       return AzureServerSettingsComponent();
     } else if (provider == 'gemini') {
       return GooleGeminiServerSettingsComponent();
+    }else if (provider == 'oneapi') {
+      return OneAPISettingsComponent();
     }
     return const SizedBox();
   }

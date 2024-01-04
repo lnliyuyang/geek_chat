@@ -87,8 +87,7 @@ class AzureServerSettingsComponent extends StatelessWidget {
                       const SizedBox(
                         width: 5,
                       ),
-                      const Text("Deploymentid: "),
-                      Text("Model name deployed on Azure".tr)
+                  Expanded(child:Text("Deploymentid: "+"Model name deployed on Azure".tr)),
                     ],
                   ),
                 ),

@@ -1,5 +1,6 @@
 enum AiType {
   chatgpt,
+  oneApi,
   bard,
   google,
 }

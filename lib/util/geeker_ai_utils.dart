@@ -1,7 +1,6 @@
 import 'package:dart_openai/dart_openai.dart';
 // import 'package:geek_chat/models/message.dart';
 import 'package:geek_chat/models/server.dart';
-import 'package:geek_chat/util/app_constants.dart';
 // import 'package:geek_chat/models/session.dart';
 
 class GeekerAIUtils {
@@ -15,7 +14,7 @@ class GeekerAIUtils {
     defaultServer = defaultServer;
     OpenAI.apiKey = defaultServer.apiKey;
     OpenAI.baseUrl = defaultServer.apiHost;
-    OpenAI.organization = "org-PlK3qjbyjGNk5PMYTZjyS9tB";
+    OpenAI.organization = defaultServer.organization;
     OpenAI.requestsTimeOut = const Duration(seconds: 60);
     // OpenAI.showLogs = debug;
     // OpenAI.showResponsesLogs = debug;

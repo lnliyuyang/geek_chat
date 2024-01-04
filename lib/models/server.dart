@@ -25,6 +25,7 @@ class ServerModel {
   String apiKey;
   String license;
   String deploymentId;
+  String organization;
   bool isActived;
   String message = '';
   // bool error = false;
@@ -37,6 +38,7 @@ class ServerModel {
     this.apiKey = '',
     this.license = '',
     this.deploymentId = '',
+    this.organization = '',
     this.isActived = false,
   }) {
     if (azureConfig.isEmpty) {
@@ -175,6 +177,25 @@ class ServerModel {
     }
     return apiHost;
   }
+  String getOrganization(AiModel model) {
+    if (provider == 'azure') {
+      Map<String, String> modelSettings =
+      getAzureModelSettings(model.modelName);
+      if (modelSettings.containsKey("organization")) {
+        return "${modelSettings['organization']}";
+      }
+    }
+    return organization;
+  }
+  String getOrganizationByModel(String modelName) {
+    if (provider == "azure") {
+      Map<String, String> modelSettings = getAzureModelSettings(modelName);
+      if (modelSettings.containsKey("organization")) {
+        return "${modelSettings['organization']}";
+      }
+    }
+    return organization;
+  }
 
   String getApiVersion(String modelName) {
     if (provider == 'azure') {
@@ -239,6 +260,7 @@ class ServerModel {
     ServerModel serverModel = ServerModel(
       provider: jsonObj['provider']!,
       apiHost: jsonObj['apiHost']!,
+      organization: jsonObj['organization']??"",
       apiKey: jsonObj['apiKey']!,
       license: jsonObj['license']!,
       deploymentId: jsonObj['deploymentId']!,
@@ -285,6 +307,7 @@ class ServerModel {
   Map<String, dynamic> toJson() => {
         "provider": provider,
         "apiHost": apiHost,
+    "organization": organization,
         "apiKey": apiKey,
         "license": license,
         "deploymentId": deploymentId,
