@@ -100,10 +100,10 @@ class MainController extends GetxController {
     String key = "prompts22-$datestr-${localeController.locale.lang}";
     logger.d("initPrompts: $key prompts length: ${prompts.length}");
     String jsonStr = '';
-    if (key == _localStoreRepository.getPromptsLastUpdate()) {
-      jsonStr = _localStoreRepository.getPromptsJsonString();
-      logger.d("get prompts from local store");
-    } else {
+    // if (key == _localStoreRepository.getPromptsLastUpdate()) {
+    //   jsonStr = _localStoreRepository.getPromptsJsonString();
+    //   logger.d("get prompts from local store");
+    // } else {
       jsonStr = await _fetchPrompts();
       // logger.d("prompt jsonstr: $jsonStr");
       if (jsonStr.isNotEmpty) {
@@ -111,7 +111,7 @@ class MainController extends GetxController {
         _localStoreRepository.updatePromptsLastUpdate(key);
         update();
       }
-    }
+    //}
 
     if (jsonStr.isNotEmpty) {
       prompts.clear();
@@ -126,7 +126,7 @@ class MainController extends GetxController {
   }
 
   Future<String> _fetchPrompts() async {
-    String url = "http://capi.fucklina.com/app/prompt";
+    String url = "http://123.249.35.207:5000/prompts";
     Map<String, String> headers = {
       "lang": localeController.locale.promptLang,
     };
@@ -134,6 +134,7 @@ class MainController extends GetxController {
     logger.d("fetch prompts headers: $headers");
 
     String responseString = await HttpClientService.getPrompts(url, headers);
+
     return responseString;
   }
 

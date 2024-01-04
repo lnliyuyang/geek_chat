@@ -74,10 +74,10 @@ class InputSubmitUtil {
       String provider = settingsServerController.defaultServer.provider;
       logger.d("provider: $provider , $model");
       if (provider == "azure") {
-        // openai = GeekerAIUtils.instance.getAzureOpenaiInstance(
-        //     settingsServerController.defaultServer, model);
-        // deploymentId = settingsServerController.defaultServer
-        //     .getDeploymentIdByModel(model);
+        openai = GeekerAIUtils.instance.getAzureOpenaiInstance(
+            settingsServerController.defaultServer, model);
+        deploymentId = settingsServerController.defaultServer
+            .getDeploymentIdByModel(model);
       } else {
         openai = GeekerAIUtils.instance
             .getOpenaiInstance(settingsServerController.defaultServer);
@@ -285,10 +285,10 @@ class InputSubmitUtil {
       chatMessageController.addMessage(userMessage);
       chatMessageController.update();
       if (provider == "azure") {
-        // openAI = GeekerAIUtils.instance.getAzureOpenaiInstance(
-        //     settingsServerController.defaultServer, model);
-        // deploymentId = settingsServerController.defaultServer
-        //     .getDeploymentIdByModel(model);
+        openAI = GeekerAIUtils.instance.getAzureOpenaiInstance(
+            settingsServerController.defaultServer, model);
+        deploymentId = settingsServerController.defaultServer
+            .getDeploymentIdByModel(model);
       } else {
         openAI = GeekerAIUtils.instance
             .getOpenaiInstance(settingsServerController.defaultServer);
